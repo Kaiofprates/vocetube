@@ -11,7 +11,10 @@ def MAIN():
     link = str(ent.get())
     def show_progress(stream, chunk, file_handle, bytes_remaining):
         progress.step(int(file_handle.tell()*100/(file_handle.tell()+bytes_remaining)))
+        st = str(str(file_handle.tell()*100/(file_handle.tell()+bytes_remaining))+"%")
         progress.update()
+        lab1["text"]=st
+
     yt = pytube.YouTube(link)
     yt.register_on_progress_callback(show_progress)
     vids= yt.streams.filter(subtype='mp4',progressive=True).all()
@@ -24,6 +27,8 @@ def baixar():
 
 lab = Label(root,text = "LINK: ")
 lab.place(x=20,y=30)
+lab1 = Label(root,text = "progress")
+lab1.place(x=20,y=120)
 ent = Entry(root,width=30)
 ent.place(x=60,y=30)
 
