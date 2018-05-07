@@ -4,6 +4,7 @@ from tkinter import *
 
 root = Tk()
 root.geometry("330x150")
+root["bg"] = "#B900B9"
 root.title("Vocetube")
 
 
@@ -25,14 +26,14 @@ def MAIN():
 def baixar():
     progress.after(2, MAIN)
 
-lab = Label(root,text = "LINK: ")
-lab.place(x=20,y=30)
-lab1 = Label(root,text = "progress")
+lab = Label(root,text = "LINK: ",fg = "#FFFFFF",bg = "#B900B9")
+lab.place(x=15,y=30)
+lab1 = Label(root,text = "progress",fg = "#FFFFFF",bg = "#B900B9")
 lab1.place(x=20,y=120)
 ent = Entry(root,width=30)
 ent.place(x=60,y=30)
 
-but = Button(root, text = "Baixar",command = baixar)
+but = Button(root,bd = 3, text = "Baixar",command = baixar)
 but.place(x=20,y =60)
 
 progress = ttk.Progressbar(root,length=300)
