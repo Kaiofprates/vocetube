@@ -13,12 +13,13 @@ def MAIN():
     def show_progress(stream, chunk, file_handle, bytes_remaining):
         progress.step(int(file_handle.tell()*100/(file_handle.tell()+bytes_remaining)))
         st = str(str(file_handle.tell()*100/(file_handle.tell()+bytes_remaining))+"%")
+        st = st[0]+st[1]+st[2]+st[3]+"%"
         progress.update()
         lab1["text"]=st
 
     yt = pytube.YouTube(link)
     yt.register_on_progress_callback(show_progress)
-    vids= yt.streams.filter(subtype='mp4',progressive=True).all()
+    vids= yt.streams.filter(progressive=True).all()
     vids[1].download()
     progress["value"]=100
     progress.update()
